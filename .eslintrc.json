@@ -1,0 +1,19 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "prettier", "fp", "functional"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:fp/recommended",
+    "plugin:functional/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "prettier/prettier": "error",
+    "functional/no-expression-statement": "off",
+    "functional/no-return-void": "off",
+    "fp/no-nil": "off",
+    "fp/no-mutation": ["error", { "commonjs": true }],
+    "fp/no-unused-expression": "off"
+  }
+}

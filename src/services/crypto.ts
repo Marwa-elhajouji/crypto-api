@@ -1,5 +1,5 @@
 import { pipe, map, toPairs, fromPairs } from "lodash/fp";
-import { EncryptFn, DecryptFn, IsEncrypted } from "../domain/types";
+import { EncryptFn, DecryptFn, IsEncrypted } from "../types";
 import { EncryptDtoType } from "../schemas/encryptDto";
 import { DecryptDtoType } from "../schemas/decryptDto";
 const parse = (decoded: string): unknown => {

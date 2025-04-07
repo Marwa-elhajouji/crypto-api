@@ -1,6 +1,6 @@
 import { createHmac } from "crypto";
 import stringify from "json-stable-stringify";
-import { SignFn } from "../domain/types";
+import { SignFn } from "../types";
 import { SignDtoType } from "../schemas/signDto";
 import { VerifyDtoType } from "../schemas/verifyDto";
 

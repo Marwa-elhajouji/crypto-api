@@ -39,10 +39,41 @@ describe("POST /sign", () => {
   it("should return 400 for invalid sign body", async () => {
     const res = await request(app)
       .post("/sign")
-      .send(null as any)
+      .set("Authorization", createAuthHeader())
+      .send(["a", "b", "c"])
       .set("Content-Type", "application/json");
 
     expect(res.status).toBe(400);
+    expect(res.body.error).toBe("ValidationError");
+    expect(res.body.message).toBe("Invalid request body");
+    expect(res.body.details).toBeDefined();
+  });
+  it("should return 400 for malformed JSON", async () => {
+    const res = await request(app)
+      .post("/sign")
+      .set("Authorization", createAuthHeader())
+      .set("Content-Type", "application/json")
+      .send("mal_formed_json");
+    expect(res.status).toBe(400);
+    expect(res.body.error).toBe("BadRequest");
+    expect(res.body.message).toBe("Malformed JSON in request body");
+  });
+  it("should return 401 if Authorization header is missing", async () => {
+    const res = await request(app).post("/sign").send({ name: "name" });
+
+    expect(res.status).toBe(401);
+    expect(res.body.error).toBe("Unauthorized");
+    expect(res.body.message).toBe("No authorization token was found");
+  });
+  it("should return 401 for invalid token", async () => {
+    const res = await request(app)
+      .post("/sign")
+      .set("Authorization", "Bearer invalid.token.value")
+      .send({ name: "name" });
+
+    expect(res.status).toBe(401);
+    expect(res.body.error).toBe("Unauthorized");
+    expect(res.body.message).toBe("invalid token");
   });
 });
 
@@ -84,14 +115,46 @@ describe("POST /verify", () => {
       });
 
     expect(res.status).toBe(400);
+    expect(res.body.error).toBe("InvalidSignature");
+    expect(res.body.message).toBe("The provided signature is invalid.");
   });
 
   it("should return 400 for invalid body format", async () => {
     const res = await request(app)
       .post("/verify")
-      .send(null as any)
-      .set("Content-Type", "application/json");
+      .set("Authorization", createAuthHeader())
+      .set("Content-Type", "application/json")
+      .send(["a", "b", "c"]);
 
     expect(res.status).toBe(400);
+    expect(res.body.error).toBe("ValidationError");
+    expect(res.body.message).toBe("Invalid request body");
+  });
+  it("should return 400 for malformed JSON", async () => {
+    const res = await request(app)
+      .post("/verify")
+      .set("Authorization", createAuthHeader())
+      .set("Content-Type", "application/json")
+      .send("mal_formed_json");
+    expect(res.status).toBe(400);
+    expect(res.body.error).toBe("BadRequest");
+    expect(res.body.message).toBe("Malformed JSON in request body");
+  });
+  it("should return 401 if Authorization header is missing", async () => {
+    const res = await request(app).post("/verify").send({ name: "name" });
+
+    expect(res.status).toBe(401);
+    expect(res.body.error).toBe("Unauthorized");
+    expect(res.body.message).toBe("No authorization token was found");
+  });
+  it("should return 401 for invalid token", async () => {
+    const res = await request(app)
+      .post("/verify")
+      .set("Authorization", "Bearer invalid.token.value")
+      .send({ name: "name" });
+
+    expect(res.status).toBe(401);
+    expect(res.body.error).toBe("Unauthorized");
+    expect(res.body.message).toBe("invalid token");
   });
 });

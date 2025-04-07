@@ -1,6 +1,6 @@
 import { isBase64 } from "validator";
 import { decrypt, encrypt } from "../../services/crypto";
-import { base64Encrypt, base64Decrypt } from "../../utils/functional";
+import { base64Encrypt, base64Decrypt } from "../../utils/base64-crypto";
 import { EncryptDtoType } from "../../schemas/encryptDto";
 import { DecryptDtoType } from "../../schemas/decryptDto";
 describe("encrypt", () => {

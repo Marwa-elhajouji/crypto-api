@@ -4,6 +4,7 @@ A minimal Node.js/Express server to encrypt, sign, and verify data. It uses JWT 
 
 ## Technologies used
 
+- Lodash/fp for functional programming
 - JWT (`express-jwt`) to secure routes
 - Zod for input validation
 - Jest + Supertest for integration tests

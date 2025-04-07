@@ -1,7 +1,7 @@
 import { HMAC_SECRET } from "../../config/env";
 import request from "supertest";
 import app from "../../index";
-import { generateToken } from "../utils";
+import { generateToken } from "../../utils/generate-token";
 
 const createAuthHeader = () =>
   `Bearer ${generateToken({ userId: "abc123", role: "admin" })}`;

@@ -1,8 +1,8 @@
 import { createHmac } from "crypto";
 import stringify from "json-stable-stringify";
 import { SignFn } from "../types";
-import { SignDtoType } from "../schemas/signDto";
-import { VerifyDtoType } from "../schemas/verifyDto";
+import { SignDtoType } from "../schemas/sign-dto";
+import { VerifyDtoType } from "../schemas/verify-dto";
 
 export const signHmac = (
   input: string,

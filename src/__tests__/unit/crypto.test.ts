@@ -1,8 +1,8 @@
 import { isBase64 } from "validator";
 import { decrypt, encrypt } from "../../services/crypto";
 import { base64Encrypt, base64Decrypt } from "../../utils/base64-crypto";
-import { EncryptDtoType } from "../../schemas/encryptDto";
-import { DecryptDtoType } from "../../schemas/decryptDto";
+import { EncryptDtoType } from "../../schemas/encrypt-dto";
+import { DecryptDtoType } from "../../schemas/decrypt-dto";
 describe("encrypt", () => {
   it("should apply base64 to top level values", () => {
     const input: EncryptDtoType = {

@@ -1,7 +1,7 @@
 import request from "supertest";
 import app from "../../index";
 import { base64Encrypt } from "../../utils/base64-crypto";
-import { generateToken } from "../utils";
+import { generateToken } from "../../utils/generate-token";
 import dotenv from "dotenv";
 dotenv.config();
 

@@ -1,7 +1,7 @@
 import { pipe, map, toPairs, fromPairs } from "lodash/fp";
 import { EncryptFn, DecryptFn, IsEncrypted } from "../types";
-import { EncryptDtoType } from "../schemas/encryptDto";
-import { DecryptDtoType } from "../schemas/decryptDto";
+import { EncryptDtoType } from "../schemas/encrypt-dto";
+import { DecryptDtoType } from "../schemas/decrypt-dto";
 const parse = (decoded: string): unknown => {
   try {
     return JSON.parse(decoded);

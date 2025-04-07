@@ -1,6 +1,6 @@
 import { sign, signHmac, validateSignature } from "../../services/sign";
-import { SignDtoType } from "../../schemas/signDto";
-import { VerifyDtoType } from "../../schemas/verifyDto";
+import { SignDtoType } from "../../schemas/sign-dto";
+import { VerifyDtoType } from "../../schemas/verify-dto";
 describe("sign", () => {
   const secret = "secret";
   const signFn = (json: string) => signHmac(json, secret);

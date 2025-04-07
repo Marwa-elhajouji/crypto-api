@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { encryptDto } from "../schemas/encryptDto";
-import { decryptDto } from "../schemas/decryptDto";
-import { signDto } from "../schemas/signDto";
+import { encryptDto } from "../schemas/encrypt-dto";
+import { decryptDto } from "../schemas/decrypt-dto";
+import { signDto } from "../schemas/sign-dto";
 import { validate } from "../middlewares/validate";
-import { verifyDto } from "../schemas/verifyDto";
+import { verifyDto } from "../schemas/verify-dto";
 import { authenticateJWT } from "../middlewares/auth";
 import * as secureController from "../controllers/secure-controller";
 

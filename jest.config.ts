@@ -15,7 +15,6 @@ const config: Config = {
   moduleNameMapper: {
     "^(\\.{1,2}/.*)\\.js$": "$1",
   },
-  testPathIgnorePatterns: ["/__tests__/utils.ts"],
 };
 
 export default config;

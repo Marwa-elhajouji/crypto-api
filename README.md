@@ -50,20 +50,23 @@ All routes are protected by a JWT middleware.
 You must include the following header in every request: Authorization: Bearer <token>
 
 ### Generate a test token (e.g. for Postman)
-- You can generate a test token with the following script:
 
+You can generate a test JWT token directly using the CLI script:
 
- ```typescript 
- import jwt from "jsonwebtoken"; import { JWT_SECRET } from "../config/env"; const token = jwt.sign( { userId: "abc123", role: "admin" }, JWT_SECRET, { algorithm: "HS256", expiresIn: "1h", } ); console.log("Generated JWT:", token);
-  ``` 
-
-- Then run:
 ```bash
-npx ts-node src/scripts/generateToken.ts
+npm run token '{"userId": "abc123", "role": "admin"}'
 ```
-- Copy the printed token and use it in Postman as a header:
+This will output a valid token using the secret defined in your .env file.
+Example output:
 
-Authorization: Bearer eyJhbGciOiJI...
+```bash
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+```
+Use this token in your API requests (e.g. in Postman) by setting the following header:
+
+```bash
+Authorization: Bearer <your-token>
+```
 
 ### Available Routes
 

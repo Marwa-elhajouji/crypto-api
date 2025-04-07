@@ -33,9 +33,5 @@ export const errorHandler = (
     return;
   }
 
-  console.error("Unhandled error:", err);
-  res.status(500).json({
-    error: "InternalServerError",
-    message: "Something went wrong.",
-  });
+  next(err);
 };
